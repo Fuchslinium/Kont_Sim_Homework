@@ -1,7 +1,5 @@
 %% Becherwurf
 
-%TESTÄNDERUNG__________________
-
 % Parameter
 par.m_Ball = 2.7e-3;   % Masse des Balles in kg
 par.d_Ball = 0.04;     % Durchmesser des Balles in m
