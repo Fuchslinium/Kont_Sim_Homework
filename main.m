@@ -13,8 +13,11 @@ par.rho = 1.2;         % Dichte der Luft in kg/m³
 % Anfangsbedingungen
 x0 = 0;                 % Nullposition x in  m
 y0 = 1.8;               % Nullposition y in m
-v_0 = 18;               % Anfangsgeschwindigkeit des Balles in m/s
-alpha_0 = 27*pi/180;    % Anfangswinkel des Balles in rad
+v_0 = 5;               % Anfangsgeschwindigkeit des Balles in m/s
+alpha_0 = 45*pi/180;    % Anfangswinkel des Balles in rad
+
+v_0x = v_0*cos(alpha_0);
+v_0y = v_0*sin(alpha_0);
 
 f0 = [x0; y0; v_0*cos(alpha_0); v_0*sin(alpha_0)];  % Anfangsbedingungen für x, y, v_x, v_y 
 
@@ -51,8 +54,10 @@ rho = par.rho;
 
 f(1) = y(3);
 f(2) = y(4);
-f(3) = ((1/8)*rho*d_Ball^2*pi*cw*sqrt(y(3)+y(4))*y(3))/m_Ball;
-f(4) = (((1/8)*rho*d_Ball^2*pi*cw*sqrt(y(3)+y(4))*y(4))/m_Ball)-g;
+f(3) = ((1/8)*rho*d_Ball^2*pi*cw*sqrt(y(3)^2+y(4)^2)*y(3))/m_Ball;
+f(4) = (((1/8)*rho*d_Ball^2*pi*cw*sqrt(y(3)^2+y(4)^2)*y(4))/m_Ball)-g;
 
 f = f';
 end
+
+
