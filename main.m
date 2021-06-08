@@ -42,9 +42,16 @@ hold on
 ylim([0 2*y0])
 xlabel('x-Position in m')
 ylabel('y-Position in m')
-s_l = par.l + par.s_Becher + (3/2)*par.d_Becher;    % Mittlerer Becher als Ziel
-l = line([s_l s_l],[0 5*y0],'Color','red','LineStyle','--');
-legend('Position des Balles', 'Ziel')
+hold on
+
+% Plot Simulink
+results_sim = sim('Hausuebung_Simulink');
+x_sim = results_sim.x_sim.Data;
+y_sim = results_sim.y_sim.Data;
+% figure(9);clf(9);
+plot(x_sim(:), y_sim(:), '-o')
+legend('Position des Balles, Matlab Solver', 'Lösung mit Simulink')
+title("Verlgeich Matlab und Simulink")
 hold off
 
 %% Parameteranalyse
@@ -205,6 +212,7 @@ ylabel('z-Position in m')
 ylim([0 0.5])
 zlabel('y-Position in m')
 zlim([0 2*y0])
+title("3D Plot")
 grid on
 
 % figure(6)
@@ -225,12 +233,7 @@ grid on
 % xlabel('solx')
 % ylabel('soly')
 
-% Plot Simulink
-results_sim = sim('Hausuebung_Simulink');
-x_sim = results_sim.x_sim.Data;
-y_sim = results_sim.y_sim.Data;
-figure(9);clf(9);
-plot(x_sim(:), y_sim(:), '-o')
+
 
 %% FUNKTIONEN---------------------------------------------------------------
 
