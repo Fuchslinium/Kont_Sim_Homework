@@ -47,13 +47,13 @@ sol = ode45(@(t,y) equations(t,y,par), tspan, f0, options);     % Call the solve
 %% Quick Visualization/Animation-------------------------------------------
 
 % Diagramm xsol ysol-------------------------------------------------------
-figure(3)
+figure(13)
 plot(sol.x,sol.y(2,:), '-o')
 xlabel('solx');ylabel('soly');
 title('Analyse Loesung');
 
 %Diagramm 3D Ansicht-------------------------------------------------------
-figure (4); clf(4);
+figure (14); clf(14);
 plot3(sol.y(1,:),sol.y(3,:),sol.y(2,:), '-o'); grid on; hold on
 
 % Becher zeichnen auf richtige Position
@@ -81,7 +81,7 @@ xlabel('Position x'); ylabel('Position z'); zlabel('Position y');
 title('Flugbahn 3D');
 
 % Diagramm XY--------------------------------------------------------------
-figure(5);clf(5);
+figure(15);clf(15);
 plot(sol.y(1,:),sol.y(2,:), '-o');hold on;
 r1 = rectangle('Position', [l, -0.15, d, 0.15],'FaceColor','r');
 r2 = rectangle('Position', [l+(d+s)*cos(alpha_Becher), -0.15, d, 0.15],'FaceColor','r');
@@ -95,7 +95,7 @@ xlabel('Position x');ylabel('Position y');
 title('Flugbahn XY Ebene');
 
 % Diagramm XZ--------------------------------------------------------------
-figure(6);clf(6);
+figure(16);clf(16);
 plot(sol.y(1,:),sol.y(3,:), '-o');hold on;
 circle(X1,Z1,d/2);circle(X2,Z2,d/2);circle(X3,Z3,d/2);
 circle(X4,Z4,d/2);circle(X5,Z5,d/2);circle(X6,Z6,d/2);
@@ -107,7 +107,7 @@ title('Flugbahn XZ Ebene');
 
 
 %% Animation 3D------------------------------------------------------------
-figure(7); clf(7);
+figure(17); clf(17);
 title('Animation Wurf');
 for k=1:1:length(sol.x)
     subplot(2,2,1);
